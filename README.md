@@ -1,0 +1,1 @@
+# dsc-2-14-16-applying-gradient-descent
