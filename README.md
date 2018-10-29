@@ -63,25 +63,20 @@ Now
 
 ```python
 # initial variables of our regression line
-b_current = 0
-m_current = 0
+
 
 #amount to update our variables for our next step
-update_to_b = 0
-update_to_m = 0 
+
 
 # Define the error_at function
-def error_at(point, b, m):
-    return (point[0]- (m * point[1]  + b))
+
 
 # iterate through data to change update_to_b and update_to_m
-for i in range(0, len(data)):
-    update_to_b += -2*(error_at(data[i], b_current, m_current))
-    update_to_m += -2*(error_at(data[i], b_current, m_current))*data[i][1]
+
 
 # Create new_b and new_m by subtracting the updates from the current estimates
-new_b = b_current - update_to_b
-new_m = m_current - update_to_m
+
+
 ```
 
 In the last two lines of the code above, we calculate our `new_b` and `new_m` values by updating our taking our current values and adding our respective updates.  We define a function called `error_at`, which we can use in the error component of our partial derivatives above.
@@ -104,21 +99,17 @@ Make these changes below:
 
 ```python
 #amount to update our variables for our next step
-update_to_b = 0
-update_to_m = 0 
+
 
 # define learning rate and n
-learning_rate = .01
-n = len(data)
+
 
 # create update_to_b and update_to_m
-for i in range(0, n):
-    update_to_b += -(1/n)*(error_at(data[i], b_current, m_current))
-    update_to_m += -(1/n)*(error_at(data[i], b_current, m_current)*data[i][0])
+
     
 # create new_b and new_m
-new_b = b_current - (learning_rate * update_to_b)
-new_m = m_current - (learning_rate * update_to_m)
+
+
 ```
 
 So our code now reflects what we know about our gradient descent process.  Start with an initial regression line with values of $m$ and $b$.  Then for each point, calculate how the regression line fares against the actual point (that is, find the error).  Update what our next step to the respective variable should be using by using the partial derivative.  And after iterating through all of the points, update the value of $b$ and $m$ appropriately, scaled down by a learning rate.
@@ -133,30 +124,14 @@ As mentioned earlier, the code above represents just one update to our regressio
 
 ```python
 def step_gradient(b_current, m_current, points):
-    b_gradient = 0
-    m_gradient = 0
-    learning_rate = .1
-    N = float(len(points))
-    for i in range(0, len(points)):
-        x = points[i][1]
-        y = points[i][0]
-        b_gradient += -(1/N) * (y - (m_current * x + b_current))
-        m_gradient += -(1/N) * x * (y -  (m_current * x + b_current))
-    new_b = b_current - (learning_rate * b_gradient)
-    new_m = m_current - (learning_rate * m_gradient)
-    return (new_b, new_m)
+    pass
 ```
 
 Now let's initialize `b` and `m` as 0 and run a first iteration of the `step_gradient` function.
 
 
 ```python
-b = 0
-m = 0
-first_step = step_gradient(b, m, data) # {'b': 0.0085, 'm': 0.6249999999999999}
 
-print(first_step[0])
-print(first_step[1])
 # b= 3.02503, m= 2.07286
 ```
 
@@ -168,9 +143,7 @@ So just looking at input and output, we begin by setting $b$ and $m$ to 0 amnd 0
 
 
 ```python
-updated_b = first_step[0]
-updated_m = first_step[1]
-step_gradient(updated_b, updated_m, data) 
+
 # b = 5.63489, m= 3.902265
 ```
 
@@ -185,23 +158,14 @@ Let's do this, say, 1000 times.
 
 
 ```python
-# set our initial step with m and b values, and the corresponding error.
-b = 0
-m = 0
-iterations = []
-for i in range(1000):
-    iteration = step_gradient(b, m, data)
-    b = iteration[0]
-    m = iteration[1]
-    # update values of b and m
-    iterations.append(iteration)
+# create a for loop to do this
 ```
 
 Let's take a look at the estimates in the last iteration.
 
 
 ```python
-iterations[999]
+# 
 ```
 
 
@@ -258,49 +222,18 @@ So we'll have one gradient per predictor along with the gradient for the interce
 
 ```python
 def step_gradient(b_current, m_current ,points):
-    b_gradient = 0
-    m_gradient = np.zeros(len(m_current))
-    learning_rate = .1
-    N = float(len(points))
-    for i in range(0, len(points)):
-        y = points[i][0]
-        x = points[i][1:(len(m_current)+1)] 
-        b_gradient += -(1/N)  * (y -  (sum(m_current * x) + b_current))
-        m_gradient += -(1/N) * x * (y -  (sum(m_current * x) + b_current))
-    new_b = b_current - (learning_rate * b_gradient)
-    new_m = m_current - (learning_rate * m_gradient)
-    return (new_b, new_m)
+    pass
 ```
 
 Apply 1 step to our data
 
-
-```python
-b = 0
-m = [0,0]
-updated_b, updated_m = step_gradient(b, m, data) # {'b': 0.0085, 'm': 0.6249999999999999}
-```
-
 Apply 500 steps to our data
 
-
-```python
-# set our initial step with m and b values, and the corresponding error.
-b = 0
-m = [0,0]
-iterations = []
-for i in range(500):
-    iteration = step_gradient(b, m, data)
-    b= iteration[0]
-    m = []
-    for j in range(len(iteration)):
-        m.append(iteration[1][j])
-    iterations.append(iteration)
-```
+Look at the last step
 
 
 ```python
-iterations[499]
+
 ```
 
 
