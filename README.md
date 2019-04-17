@@ -298,6 +298,8 @@ for i in range(500):
     iterations.append(iteration)
 ```
 
+Look at this last step
+
 
 ```python
 iterations[499]
