@@ -269,7 +269,7 @@ You might have to refactor your `error` at function if you want to use it with m
 
 
 ```python
-def step_gradient(b_current, m_current ,points):
+def step_gradient_multi(b_current, m_current ,points):
     b_gradient = 0
     m_gradient = np.zeros(len(m_current))
     learning_rate = .1
@@ -290,7 +290,7 @@ Apply 1 step to our data
 ```python
 b = 0
 m = [0,0]
-updated_b, updated_m = step_gradient(b, m, data) # {'b': 0.0085, 'm': 0.6249999999999999}
+updated_b, updated_m = step_gradient_multi(b, m, data) # {'b': 0.0085, 'm': 0.6249999999999999}
 ```
 
 Apply 500 steps to our data
@@ -302,7 +302,7 @@ b = 0
 m = [0,0]
 iterations = []
 for i in range(500):
-    iteration = step_gradient(b, m, data)
+    iteration = step_gradient_multi(b, m, data)
     b= iteration[0]
     m = []
     for j in range(len(iteration)):
