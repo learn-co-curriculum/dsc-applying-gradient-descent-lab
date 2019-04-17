@@ -216,7 +216,7 @@ ax2.plot(x2, y, '.b');
 ```
 
 
-![png](index_files/index_38_0.png)
+![png](index_files/index_18_0.png)
 
 
 Note that, for our gradients, when having multiple predictors $x_j$ with $j \in 1,\ldots, k$
