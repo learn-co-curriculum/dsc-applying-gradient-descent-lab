@@ -9,7 +9,7 @@ In the last lesson, we derived the functions that we help us descend along our c
 
 When descending along our cost curve in two dimensions, we used the slope of the tangent line at each point, to tell us how large of a step to take next.  And with the cost curve being a function of $m$ and $b$, we had to use the gradient to determine each step.  
 
-![](./images/gradientdescent.png)
+<img src="./images/new_gradientdescent.png" width="600">
 
 But really it's an analogous approach.  Just like we can calculate the use derivative of a function $f(x)$ to calculate the slope at a given value of $x$ on the graph and thus our next step.  Here, we calculated the partial derivative with respect to both variables, our slope and y-intercept, to calculate the amount to move next in either direction, and thus to steer us towards our minimum.   
 
