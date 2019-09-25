@@ -16,8 +16,8 @@ But really it's an analogous approach.  Just like we can calculate the use deriv
 ## Objectives
 
 You will be able to:
-- Create a full gradient descent algorithm
-- Apply a gradient descent algorithm on a data set with more than one variable
+* Create a full gradient descent algorithm
+* Apply a gradient descent algorithm on a data set with more than one variable
 
 ## Reviewing our gradient descent formulas
 
