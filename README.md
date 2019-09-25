@@ -16,8 +16,8 @@ But really it's an analogous approach.  Just like we can calculate the use deriv
 ## Objectives
 
 You will be able to:
-- Create a full gradient descent algorithm
-- Apply a gradient descent algorithm on a data set with more than one variable
+* Create a full gradient descent algorithm
+* Apply a gradient descent algorithm on a data set with more than one variable
 
 ## Reviewing our gradient descent formulas
 
@@ -433,11 +433,6 @@ Apply 1 step to our data
 
 
 ```python
-
-```
-
-
-```python
 # __SOLUTION__ 
 b = 0
 m = [0,0]
@@ -445,11 +440,6 @@ updated_b, updated_m = step_gradient_multi(b, m, data) # {'b': 0.0085, 'm': 0.62
 ```
 
 Apply 500 steps to our data
-
-
-```python
-
-```
 
 
 ```python
