@@ -39,6 +39,7 @@ Ok let's turn this into code.  First, let's initialize our data like we did befo
 import numpy as np
 np.set_printoptions(formatter={'float_kind':'{:f}'.format})
 import matplotlib.pyplot as plt
+%matplotlib inline
 np.random.seed(225)
 
 x = np.random.rand(30, 1).reshape(30)
@@ -145,10 +146,6 @@ Now let's initialize `b` and `m` as 0 and run a first iteration of the `step_gra
 # b= 3.02503, m= 2.07286
 ```
 
-    3.0250308395837813
-    2.0728619246505193
-
-
 So just looking at input and output, we begin by setting $b$ and $m$ to 0 and 0.  Then from our step_gradient function, we receive new values of $b$ and $m$ of 3.02503 and 2.0728.  Now what we need to do, is take another step in the correct direction by calling our step gradient function with our updated values of $b$ and $m$.
 
 
@@ -156,13 +153,6 @@ So just looking at input and output, we begin by setting $b$ and $m$ to 0 and 0.
 
 # b = 5.63489, m= 3.902265
 ```
-
-
-
-
-    (5.634896312558807, 3.902265648903966)
-
-
 
 Let's do this, say, 1000 times.
 
@@ -177,13 +167,6 @@ Let's take a look at the estimates in the last iteration.
 ```python
 # 
 ```
-
-
-
-
-    (3.1619764855577257, 49.84313430300858)
-
-
 
 As you can see, our  m  and  b  values both update with each step. Not only that, but with each step, the size of the changes to  m and  b  decrease. This is because they are approaching a best fit line.
 
@@ -215,10 +198,6 @@ ax2.set_title('x_2')
 ax2.plot(x2, y, '.b');
 ```
 
-
-![png](index_files/index_18_0.png)
-
-
 Note that, for our gradients, when having multiple predictors $x_j$ with $j \in 1,\ldots, k$
 
 $$ \frac{dJ}{dm_j}J(m_j,b) = -2\sum_{i = 1}^n x_{j,i}(y_i - (\sum_{j=1}^km{x_{j,i}} + b)) = -2\sum_{i = 1}^n x_{j,i}*\epsilon_i$$
@@ -228,6 +207,10 @@ $$ \frac{dJ}{db}J(m_j,b) = -2\sum_{i = 1}^n(y_i - (\sum_{j=1}^km{x_{j,i}} + b)) 
 So we'll have one gradient per predictor along with the gradient for the intercept!
 
 Create the `step_gradient_multi` function below. As we said before, this means that we have more than one feature that we are using as an independent variable in the regression. This function will have the same inputs as `step_gradient`, but it will be able to handle having more than one value for m. It should return the final values for b and m in the form of a tuple.
+
+- `b_current` refers to the y-intercept at the current step
+- `m_current` refers to the slope at the current step
+- `points` are the data points to which we want to fit a line
 
 You might have to refactor your `error` at function if you want to use it with multiple m values.
 
@@ -257,13 +240,6 @@ Look at the last step
 ```python
 
 ```
-
-
-
-
-    (1.944428332442866, array([2.995890, -3.911055]))
-
-
 
 ## Level up - optional
 
