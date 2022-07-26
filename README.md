@@ -1,15 +1,14 @@
-
 # Applying Gradient Descent - Lab
 
 ## Introduction
 
 In the last lesson, we derived the functions that we help us descend along our cost functions efficiently.  Remember that this technique is not so different from what we saw with using the derivative to tell us our next step size and direction in two dimensions.  
 
-![](./images/slopes.png)
+<img src="https://raw.githubusercontent.com/learn-co-curriculum/dsc-applying-gradient-descent-lab/master/images/slopes.png" alt="RSS with changes to slope" />
 
 When descending along our cost curve in two dimensions, we used the slope of the tangent line at each point, to tell us how large of a step to take next.  And with the cost curve being a function of $m$ and $b$, we had to use the gradient to determine each step.  
 
-<img src="./images/new_gradientdescent.png" width="600">
+<img src="https://raw.githubusercontent.com/learn-co-curriculum/dsc-applying-gradient-descent-lab/master/images/new_gradientdescent.png" alt="gradient descent in 3d with absolute minimum highlighted" width="600">
 
 But really it's an analogous approach.  Just like we can calculate the use derivative of a function $f(x)$ to calculate the slope at a given value of $x$ on the graph and thus our next step.  Here, we calculated the partial derivative with respect to both variables, our slope and y-intercept, to calculate the amount to move next in either direction and thus to steer us towards our minimum.   
 
@@ -395,6 +394,11 @@ Apply 1 step to our data
 
 
 ```python
+
+```
+
+
+```python
 # __SOLUTION__ 
 b = 0
 m = [0,0]
@@ -402,6 +406,11 @@ updated_b, updated_m = step_gradient_multi(b, m, data) # {'b': 0.0085, 'm': 0.62
 ```
 
 Apply 500 steps to our data
+
+
+```python
+
+```
 
 
 ```python
@@ -420,6 +429,11 @@ for i in range(500):
 ```
 
 Look at the last step
+
+
+```python
+
+```
 
 
 ```python
