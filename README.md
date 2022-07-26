@@ -15,6 +15,7 @@ But really it's an analogous approach.  Just like we can calculate the use deriv
 ## Objectives
 
 You will be able to:
+
 * Create functions to perform a simulation of gradient descent for an actual dataset
 * Represent RSS as a multivariable function and take partial derivatives to perform gradient descent
 
