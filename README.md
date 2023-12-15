@@ -54,6 +54,27 @@ plt.xlabel("x", fontsize=14)
 plt.ylabel("y", fontsize=14);
 ```
 
+
+```python
+# __SOLUTION__ 
+import numpy as np
+np.set_printoptions(formatter={'float_kind':'{:f}'.format})
+import matplotlib.pyplot as plt
+%matplotlib inline
+np.random.seed(225)
+
+x = np.random.rand(30, 1).reshape(30)
+y_randterm = np.random.normal(0,3,30)
+y = 3 + 50* x + y_randterm
+
+data = np.array([y, x])
+data = np.transpose(data)
+
+plt.plot(x, y, '.b')
+plt.xlabel("x", fontsize=14)
+plt.ylabel("y", fontsize=14);
+```
+
 Now
 
 - Let's set our initial regression line by initializing $m$ and $b$ variables as zero.  Store them in `b_current` and `m_current`.
@@ -67,6 +88,26 @@ Now
 
 
 ```python
+# initial variables of our regression line
+
+
+#amount to update our variables for our next step
+
+
+# Define the error_at function
+
+
+# iterate through data to change update_to_b and update_to_m
+
+
+# Create new_b and new_m by subtracting the updates from the current estimates
+
+
+```
+
+
+```python
+# __SOLUTION__ 
 # initial variables of our regression line
 b_current = 0
 m_current = 0
@@ -109,6 +150,23 @@ Make these changes below:
 
 ```python
 #amount to update our variables for our next step
+
+
+# define learning rate and n
+
+
+# create update_to_b and update_to_m
+
+    
+# create new_b and new_m
+
+
+```
+
+
+```python
+# __SOLUTION__ 
+#amount to update our variables for our next step
 update_to_b = 0
 update_to_m = 0 
 
@@ -144,6 +202,13 @@ See if you can use your `error_at` function within the `step_gradient` function!
 
 ```python
 def step_gradient(b_current, m_current, points):
+    pass
+```
+
+
+```python
+# __SOLUTION__ 
+def step_gradient(b_current, m_current, points):
     b_gradient = 0
     m_gradient = 0
     learning_rate = .1
@@ -162,6 +227,13 @@ Now let's initialize `b` and `m` as 0 and run a first iteration of the `step_gra
 
 
 ```python
+
+# b= 3.02503, m= 2.07286
+```
+
+
+```python
+# __SOLUTION__ 
 b = 0
 m = 0
 first_step = step_gradient(b, m, data) # {'b': 0.0085, 'm': 0.6249999999999999}
@@ -175,6 +247,13 @@ So just looking at input and output, we begin by setting $b$ and $m$ to 0 and 0.
 
 
 ```python
+
+# b = 5.63489, m= 3.902265
+```
+
+
+```python
+# __SOLUTION__ 
 updated_b = first_step[0]
 updated_m = first_step[1]
 step_gradient(updated_b, updated_m, data) 
@@ -185,6 +264,12 @@ Let's do this, say, 1000 times.
 
 
 ```python
+# create a for loop to do this
+```
+
+
+```python
+# __SOLUTION__ 
 # set our initial step with m and b values, and the corresponding error.
 b = 0
 m = 0
@@ -201,6 +286,12 @@ Let's take a look at the estimates in the last iteration.
 
 
 ```python
+# 
+```
+
+
+```python
+# __SOLUTION__ 
 iterations[999]
 ```
 
@@ -234,6 +325,32 @@ ax2.set_title('x_2')
 ax2.plot(x2, y, '.b');
 ```
 
+
+```python
+# __SOLUTION__ 
+import numpy as np
+import matplotlib.pyplot as plt
+np.random.seed(11)
+
+x1 = np.random.rand(100,1).reshape(100)
+x2 = np.random.rand(100,1).reshape(100)
+y_randterm = np.random.normal(0,0.2,100)
+y = 2+ 3* x1+ -4*x2 + y_randterm
+
+data = np.array([y, x1, x2])
+data = np.transpose(data)
+```
+
+
+```python
+# __SOLUTION__ 
+f, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5), sharey=True)
+ax1.set_title('x_1')
+ax1.plot(x1, y, '.b')
+ax2.set_title('x_2')
+ax2.plot(x2, y, '.b');
+```
+
 Note that, for our gradients, when having multiple predictors $x_j$ with $j \in 1,\ldots, k$
 
 $$ \frac{dJ}{dm_j}J(m_j,b) = -2\sum_{i = 1}^n x_{j,i}(y_i - (\sum_{j=1}^km{x_{j,i}} + b)) = -2\sum_{i = 1}^n x_{j,i}*\epsilon_i$$
@@ -253,6 +370,13 @@ You might have to refactor your `error` at function if you want to use it with m
 
 ```python
 def step_gradient_multi(b_current, m_current ,points):
+    pass
+```
+
+
+```python
+# __SOLUTION__ 
+def step_gradient_multi(b_current, m_current ,points):
     b_gradient = 0
     m_gradient = np.zeros(len(m_current))
     learning_rate = .1
@@ -271,6 +395,12 @@ Apply 1 step to our data
 
 
 ```python
+
+```
+
+
+```python
+# __SOLUTION__ 
 b = 0
 m = [0,0]
 updated_b, updated_m = step_gradient_multi(b, m, data) # {'b': 0.0085, 'm': 0.6249999999999999}
@@ -280,6 +410,12 @@ Apply 500 steps to our data
 
 
 ```python
+
+```
+
+
+```python
+# __SOLUTION__ 
 # set our initial step with m and b values, and the corresponding error.
 b = 0
 m = [0,0]
@@ -297,6 +433,12 @@ Look at the last step
 
 
 ```python
+
+```
+
+
+```python
+# __SOLUTION__ 
 iterations[499]
 ```
 
